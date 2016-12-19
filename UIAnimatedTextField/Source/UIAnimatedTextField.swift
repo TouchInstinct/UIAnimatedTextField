@@ -40,6 +40,11 @@ public enum TextType {
 @IBDesignable
 public class UIAnimatedTextField: UIView {
     
+    // MARK: - Constants
+    struct Constants {
+        static let done = "Done"
+    }
+    
     // MARK: - Delegate
     
     weak public var delegate: UIAnimatedTextFieldDelegate?
@@ -163,10 +168,11 @@ public class UIAnimatedTextField: UIView {
         set { lineView.backgroundColor = newValue }
     }
     
-    // MARK: - Private Properties
-    
+    static public let doneTitle: String = Constants.done
     static public let animationDuration: TimeInterval = 0.3
     static public let disclosureIndicatorWidth = 15.0
+    
+    // MARK: - Private Properties
     
     private var tapGestureRecognizer: UITapGestureRecognizer?
     private var tapAction: ((_ animatedTextField: UIAnimatedTextField) -> Void)?
@@ -395,7 +401,7 @@ public class UIAnimatedTextField: UIView {
         toolbar.barTintColor = UIColor.white
         
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneItem = UIBarButtonItem(title: "Done",
+        let doneItem = UIBarButtonItem(title: UIAnimatedTextField.doneTitle,
                                        style: .done,
                                        target: self,
                                        action: #selector(datePickerDoneAction))
