@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol UIAnimatedTextFieldDelegate: class {
+@objc public protocol UIAnimatedTextFieldDelegate: class {
     
     @objc optional func animatedTextFieldValueDidChange(_ animatedTextField: UIAnimatedTextField)
     @objc optional func animatedTextFieldWillReactForTap()
@@ -24,12 +24,12 @@ import UIKit
     
 }
 
-enum AnimatedTextFieldState {
+public enum AnimatedTextFieldState {
     case placeholder
     case text
 }
 
-enum TextType {
+public enum TextType {
     case simple
     case password
     case url
@@ -42,7 +42,7 @@ public class UIAnimatedTextField: UIView {
     
     // MARK: - Delegate
     
-    weak var delegate: UIAnimatedTextFieldDelegate?
+    weak public var delegate: UIAnimatedTextFieldDelegate?
     
     // MARK: - UI Properties
     
@@ -54,7 +54,7 @@ public class UIAnimatedTextField: UIView {
     
     // MARK: - Properties
     
-    var text: String? {
+    public var text: String? {
         get {
             return textField.text
         }
@@ -65,7 +65,7 @@ public class UIAnimatedTextField: UIView {
         }
     }
     
-    @IBInspectable var placeholder: String? {
+    @IBInspectable public var placeholder: String? {
         get {
             return placeholderLabel.text
         }
@@ -74,7 +74,7 @@ public class UIAnimatedTextField: UIView {
         }
     }
     
-    var font: UIFont? {
+    public var font: UIFont? {
         get {
             return placeholderLabel.font
         }
@@ -84,13 +84,13 @@ public class UIAnimatedTextField: UIView {
         }
     }
     
-    var isDisclosureIndicatorVisible: Bool = false {
+    public var isDisclosureIndicatorVisible: Bool = false {
         didSet {
             disclosureIndicatorImageView.isHidden = !isDisclosureIndicatorVisible
         }
     }
     
-    @IBInspectable var isLeftTextAlignment: Bool {
+    @IBInspectable public var isLeftTextAlignment: Bool {
         get {
             return textField.textAlignment == .left
         }
@@ -101,7 +101,7 @@ public class UIAnimatedTextField: UIView {
         }
     }
     
-    var type: TextType = .simple {
+    public var type: TextType = .simple {
         didSet {
             textField.isSecureTextEntry = false
             textField.keyboardType = .default
@@ -148,25 +148,25 @@ public class UIAnimatedTextField: UIView {
         }
     }
     
-    var selectedDate: Date?
+    public var selectedDate: Date?
     
     @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
     @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
     
-    @IBInspectable var enteredTextColor: UIColor {
+    @IBInspectable public var enteredTextColor: UIColor {
         get { return textField.textColor ?? UIColor.black }
         set { textField.textColor = newValue }
     }
     
-    @IBInspectable var lineColor: UIColor {
+    @IBInspectable public var lineColor: UIColor {
         get { return lineView.backgroundColor ?? UIColor.gray }
         set { lineView.backgroundColor = newValue }
     }
     
     // MARK: - Private Properties
     
-    static let animationDuration: TimeInterval = 0.3
-    static let disclosureIndicatorWidth = 15.0
+    static public let animationDuration: TimeInterval = 0.3
+    static public let disclosureIndicatorWidth = 15.0
     
     private var tapGestureRecognizer: UITapGestureRecognizer?
     private var tapAction: ((_ animatedTextField: UIAnimatedTextField) -> Void)?
@@ -184,7 +184,7 @@ public class UIAnimatedTextField: UIView {
     
     // MARK: - Initialization
     
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         initialization()
     }
@@ -291,7 +291,7 @@ public class UIAnimatedTextField: UIView {
     
     // MARK: - Animation
     
-    func setState(toState state: AnimatedTextFieldState, duration: TimeInterval) {
+    public func setState(toState state: AnimatedTextFieldState, duration: TimeInterval) {
         UIView.animate(
             withDuration: duration,
             delay: 0,
@@ -320,7 +320,7 @@ public class UIAnimatedTextField: UIView {
         tapAction?(self)
     }
     
-    func validateText() -> Bool {
+    public func validateText() -> Bool {
         guard let text = textField.text else {
             return false
         }
@@ -335,7 +335,7 @@ public class UIAnimatedTextField: UIView {
         return true
     }
     
-    func showInfo(infoText: String) {
+    public func showInfo(infoText: String) {
         guard !isShownInfo else {
             return
         }
