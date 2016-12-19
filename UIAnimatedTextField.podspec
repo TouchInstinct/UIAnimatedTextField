@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name             = 'UIAnimatedTextField'
   s.version          = '0.1.5'
-  s.summary          = 'UIAnimatedTextField'
+  s.summary          = 'UITextField with animated placeholder'
   s.description      = <<-DESC
-                        Animated text field
+                        This custom control can be used as a replacement for UITextField. It comes with 5 different text types: simple, password, url, tappable, date.
                        DESC
   s.homepage         = 'https://github.com/iznv/UIAnimatedTextField'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
