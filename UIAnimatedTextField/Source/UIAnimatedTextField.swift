@@ -59,6 +59,8 @@ public class UIAnimatedTextField: UIView {
     // MARK: - Constants
     struct Constants {
         static let done = "Done"
+        static let space = " "
+        static let defaultDateFormat = "dd/MM/YYYY"
     }
     
     // MARK: - Delegate
@@ -170,6 +172,7 @@ public class UIAnimatedTextField: UIView {
     }
     
     public var selectedDate: Date?
+    public var dateFormat: String = Constants.defaultDateFormat
     
     @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
     @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
@@ -407,7 +410,7 @@ public class UIAnimatedTextField: UIView {
     
     @objc private func datePickerValueChanged(_ datePicker: UIDatePicker) {
         selectedDate = datePicker.date
-        text = TIDateFormatter.longDate(from: datePicker.date)
+        text = datePicker.date.toString(withFormat: dateFormat)
     }
     
     private func getDateInputAccessoryView() -> UIView {
@@ -461,7 +464,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         
         if case .date = type {
             if let datePicker = textField.inputView as? UIDatePicker {
-                textField.text = TIDateFormatter.longDate(from: datePicker.date)
+                textField.text = datePicker.date.toString(withFormat: dateFormat)
             }
         }
         
