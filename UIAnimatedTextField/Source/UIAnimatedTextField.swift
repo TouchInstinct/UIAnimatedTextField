@@ -38,7 +38,7 @@ enum TextType {
 }
 
 @IBDesignable
-class UIAnimatedTextField: UIView {
+public class UIAnimatedTextField: UIView {
     
     // MARK: - Delegate
     
@@ -189,7 +189,7 @@ class UIAnimatedTextField: UIView {
         initialization()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initialization()
     }
@@ -272,7 +272,7 @@ class UIAnimatedTextField: UIView {
         }
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         textField.frame = textFieldFrame()
@@ -422,7 +422,7 @@ class UIAnimatedTextField: UIView {
 
 extension UIAnimatedTextField: UITextFieldDelegate {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         var result = true
         
         if let delegateResult = delegate?.animatedTextFieldShouldBeginEditing?(self) {
@@ -432,7 +432,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         return result
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.text?.characters.count ?? 0 == 0 {
             setState(toState: .text, duration: UIAnimatedTextField.animationDuration)
         }
@@ -446,7 +446,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         delegate?.animatedTextFieldDidBeginEditing?(self)
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         var result = true
         
         if let delegateResult = delegate?.animatedTextFieldShouldEndEditing?(self) {
@@ -456,7 +456,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         return result
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text?.characters.count ?? 0 == 0 {
             setState(toState: .placeholder, duration: UIAnimatedTextField.animationDuration)
         }
@@ -464,7 +464,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         delegate?.animatedTextFieldDidEndEditing?(self)
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
         var result = true
         
@@ -489,7 +489,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         return result
     }
     
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
         var result = true
         
         if let delegateResult = delegate?.animatedTextFieldShouldClear?(self) {
@@ -499,7 +499,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         return result
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         var result = true
         
         if let delegateResult = delegate?.animatedTextFieldShouldReturn?(self) {
