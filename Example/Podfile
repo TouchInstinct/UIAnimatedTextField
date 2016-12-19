@@ -1,0 +1,6 @@
+use_frameworks!
+target 'UIAnimatedTextField_Tests' do
+  pod 'UIAnimatedTextField', :path => '../'
+  
+  
+end
