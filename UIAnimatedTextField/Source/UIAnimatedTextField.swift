@@ -150,8 +150,8 @@ public class UIAnimatedTextField: UIView {
     
     var selectedDate: Date?
     
-    @IBInspectable var placeholderTopColor: UIColor = UIColor.gray
-    @IBInspectable var placeholderBottomColor: UIColor = UIColor.gray
+    @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
+    @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
     
     @IBInspectable var enteredTextColor: UIColor {
         get { return textField.textColor ?? UIColor.black }

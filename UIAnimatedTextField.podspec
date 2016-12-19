@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'UIAnimatedTextField'
-  s.version          = '0.1.2'
+  s.version          = '0.1.3'
   s.summary          = 'UIAnimatedTextField'
   s.description      = <<-DESC
                         Animated text field
