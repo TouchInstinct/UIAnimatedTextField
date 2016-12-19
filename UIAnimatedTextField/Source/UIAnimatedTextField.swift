@@ -498,8 +498,8 @@ extension UIAnimatedTextField: UITextFieldDelegate {
             result = delegateResult
         }
         
-        if string == " " {
-            if textField.text?.characters.count ?? 0 == 0 {
+        if string == Constants.space {
+            if textField.text?.isEmpty ?? true {
                 result = false
             }
             
