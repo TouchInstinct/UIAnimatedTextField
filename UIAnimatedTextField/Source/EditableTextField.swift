@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EditableTextField: UITextField {
+public class EditableTextField: UITextField {
     
     var getType: (() -> TextType?)?
     
@@ -20,7 +20,7 @@ class EditableTextField: UITextField {
         #selector(paste(_:))
     ]
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         guard let type = getType?() else {
             return super.canPerformAction(action, withSender: sender)
         }
@@ -34,7 +34,7 @@ class EditableTextField: UITextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    override func caretRect(for position: UITextPosition) -> CGRect {
+    override public func caretRect(for position: UITextPosition) -> CGRect {
         guard let type = getType?() else {
             return super.caretRect(for: position)
         }

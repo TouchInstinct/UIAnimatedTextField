@@ -46,10 +46,10 @@ public class UIAnimatedTextField: UIView {
     
     // MARK: - UI Properties
     
-    private(set) var textField: EditableTextField!
-    private(set) var placeholderLabel: UILabel!
+    private(set) public var textField: EditableTextField!
+    private(set) public var placeholderLabel: UILabel!
+    private(set) public var lineView: UIView!
     
-    private(set) var lineView: UIView!
     private var disclosureIndicatorImageView: UIImageView!
     
     // MARK: - Properties
