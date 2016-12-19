@@ -3,7 +3,7 @@
 ## Installation
 
 UIAnimatedTextField is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the pod 'UIAnimatedTextField' and a source for podspecs to your Podfile. For example:
+it, simply add the pod 'UIAnimatedTextField' and the source for podspecs to your Podfile. For example:
 
 ```ruby
 source "https://github.com/iznv/Podspecs.git"
@@ -12,7 +12,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target "ProjectName" do
-pod 'UIAnimatedTextField'
+    pod 'UIAnimatedTextField'
 end
 ```
 
@@ -20,10 +20,7 @@ end
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Copyright
-
-2016 Touch Instinct
-
 ## License
+Copyright (c) 2016 Touch Instinct
 
 UIAnimatedTextField is available under the MIT license. See the LICENSE file for more info.
