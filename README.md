@@ -58,14 +58,14 @@ textField.doneTitle = "Ok"
 textField.dateFormat = "dd MMMM YYYY"
 ```
 
-### Tappable
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/date.png" width="300">
+
+### Tappable type
 In order to choose somewhere something that will be displayed in text field, specify type as .tappable and designate an action, for example:
 ```swift
 textField.type = .tappable(action: {textField in textField.text = "Selected thing" })
 ```
 Tap on the field, do an action, display a result in text field.
-
-<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/date.png" width="300">
 
 ## License
 Copyright (c) 2016 Touch Instinct
