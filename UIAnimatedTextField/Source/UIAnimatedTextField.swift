@@ -75,7 +75,42 @@ public class UIAnimatedTextField: UIView {
     
     private var disclosureIndicatorImageView: UIImageView!
     
-    // MARK: - Properties
+    // MARK: - @IBInspectable Properties
+    
+    @IBInspectable public var placeholder: String? {
+        get {
+            return placeholderLabel.text
+        }
+        set {
+            placeholderLabel.text = newValue
+        }
+    }
+    
+    @IBInspectable public var isLeftTextAlignment: Bool {
+        get {
+            return textField.textAlignment == .left
+        }
+        set {
+            let alignment: NSTextAlignment = newValue ? .left : .center
+            textField.textAlignment = alignment
+            placeholderLabel.textAlignment = alignment
+        }
+    }
+    
+    @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
+    @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
+    
+    @IBInspectable public var enteredTextColor: UIColor {
+        get { return textField.textColor ?? UIColor.black }
+        set { textField.textColor = newValue }
+    }
+    
+    @IBInspectable public var lineColor: UIColor {
+        get { return lineView.backgroundColor ?? UIColor.gray }
+        set { lineView.backgroundColor = newValue }
+    }
+    
+    // MARK: - Public Properties
     
     public var text: String? {
         get {
@@ -87,16 +122,7 @@ public class UIAnimatedTextField: UIView {
             layoutSubviews()
         }
     }
-    
-    @IBInspectable public var placeholder: String? {
-        get {
-            return placeholderLabel.text
-        }
-        set {
-            placeholderLabel.text = newValue
-        }
-    }
-    
+
     public var font: UIFont? {
         get {
             return placeholderLabel.font
@@ -112,18 +138,7 @@ public class UIAnimatedTextField: UIView {
             disclosureIndicatorImageView.isHidden = !isDisclosureIndicatorVisible
         }
     }
-    
-    @IBInspectable public var isLeftTextAlignment: Bool {
-        get {
-            return textField.textAlignment == .left
-        }
-        set {
-            let alignment: NSTextAlignment = newValue ? .left : .center
-            textField.textAlignment = alignment
-            placeholderLabel.textAlignment = alignment
-        }
-    }
-    
+
     public var type: TextType = .simple {
         didSet {
             textField.isSecureTextEntry = false
@@ -174,18 +189,7 @@ public class UIAnimatedTextField: UIView {
     public var selectedDate: Date?
     public var dateFormat: String = Constants.defaultDateFormat
     
-    @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
-    @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
-    
-    @IBInspectable public var enteredTextColor: UIColor {
-        get { return textField.textColor ?? UIColor.black }
-        set { textField.textColor = newValue }
-    }
-    
-    @IBInspectable public var lineColor: UIColor {
-        get { return lineView.backgroundColor ?? UIColor.gray }
-        set { lineView.backgroundColor = newValue }
-    }
+    // MARK: - Static Properties
     
     static public let doneTitle: String = Constants.done
     static public let animationDuration: TimeInterval = 0.3
@@ -444,6 +448,8 @@ public class UIAnimatedTextField: UIView {
     }
     
 }
+
+// MARK: - Extension
 
 extension UIAnimatedTextField: UITextFieldDelegate {
     
