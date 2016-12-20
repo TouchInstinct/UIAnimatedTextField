@@ -188,10 +188,14 @@ public class UIAnimatedTextField: UIView {
     
     public var selectedDate: Date?
     public var dateFormat: String = Constants.defaultDateFormat
+    public var doneTitle: String = Constants.done {
+        didSet {
+            textField.inputAccessoryView = getDateInputAccessoryView()
+        }
+    }
     
     // MARK: - Static Properties
     
-    static public let doneTitle: String = Constants.done
     static public let animationDuration: TimeInterval = 0.3
     static public let disclosureIndicatorWidth = 15.0
     
@@ -424,7 +428,7 @@ public class UIAnimatedTextField: UIView {
         toolbar.barTintColor = UIColor.white
         
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneItem = UIBarButtonItem(title: UIAnimatedTextField.doneTitle,
+        let doneItem = UIBarButtonItem(title: doneTitle,
                                        style: .done,
                                        target: self,
                                        action: #selector(datePickerDoneAction))
