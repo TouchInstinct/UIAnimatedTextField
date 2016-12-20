@@ -16,7 +16,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target "ProjectName" do
-    pod 'UIAnimatedTextField'
+    pod 'UIAnimatedTextField', '0.1.7'
 end
 ```
 
