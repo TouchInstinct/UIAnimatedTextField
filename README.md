@@ -21,7 +21,7 @@ end
 ```
 
 ## Usage
-Set height of UIView to 50. Create IBOutlet:
+Set height of UIView to 50 (optionally, to make UIAnimatedTextField look pretty). Create IBOutlet:
 ```swift
 @IBOutlet weak var textField: UIAnimatedTextField!
 ```
