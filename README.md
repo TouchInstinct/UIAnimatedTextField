@@ -39,6 +39,8 @@ In order to use UIAnimatedTextField for password input, specify its type as .pas
 textField.type = .password
 ```
 
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/password.png" width="300">
+
 ### Date type
 In order to use UIAnimatedTextField for date input, specify its type as .date 
 ```swift
@@ -52,9 +54,7 @@ textField.doneTitle = "Ok"
 textField.dateFormat = "dd MMMM YYYY"
 ```
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/date.png" width="300">
 
 ## License
 Copyright (c) 2016 Touch Instinct
