@@ -16,6 +16,41 @@ target "ProjectName" do
 end
 ```
 
+## Usage
+Set height of UIView to 50. Create IBOutlet:
+```swift
+@IBOutlet weak var textField: UIAnimatedTextField!
+```
+
+In order to enable placeholder, set placeholder property:
+```swift
+textField.placeholder = "Enter something"
+```
+
+### Simple type
+By default you use simple type. It is just a text field.
+
+### Password type
+In order to use UIAnimatedTextField for password input, specify its type as .password 
+```swift
+textField.type = .password
+end
+```
+
+### Date type
+In order to use UIAnimatedTextField for date input, specify its type as .date 
+```swift
+textField.type = .date
+end
+```
+Also you can set date format and done button title:
+```swift
+// "Done" by default
+textField.doneTitle = "Ok"
+// dd/MM/YYYY" by default
+textField.dateFormat = "dd MMMM YYYY"
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
