@@ -29,8 +29,9 @@ textField.placeholder = "Enter something"
 
 ### Simple type
 By default you use simple type. It is just a text field.
-<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/simple1.png" width="100">
-<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/simple2.png" width="100">
+
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/simple1.png" width="300">
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/simple2.png" width="300">
 
 ### Password type
 In order to use UIAnimatedTextField for password input, specify its type as .password 
