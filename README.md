@@ -1,5 +1,9 @@
 # UIAnimatedTextField
 
+This custom control can be used as a replacement for UITextField.
+When an user taps on it, a placeholder rises smoothly.
+It comes with 5 different text types: simple, password, url, tappable, date.
+
 ## Installation
 
 UIAnimatedTextField is available through [CocoaPods](http://cocoapods.org). To install
@@ -53,6 +57,13 @@ textField.doneTitle = "Ok"
 // "dd/MM/YYYY" by default
 textField.dateFormat = "dd MMMM YYYY"
 ```
+
+### Tappable
+In order to choose somewhere something that will be displayed in text field, specify type as .tappable and designate an action, for example:
+```swift
+textField.type = .tappable(action: {textField in textField.text = "Selected thing" })
+```
+Tap on the field, do an action, display a result in text field.
 
 <img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/date.png" width="300">
 
