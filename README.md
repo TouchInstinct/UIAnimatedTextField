@@ -67,6 +67,32 @@ textField.type = .tappable(action: {textField in textField.text = "Selected thin
 ```
 Tap on the field, do an action, display a result in text field.
 
+## Customization
+
+### Color
+You can change color of placeholder, entered text, line like this:
+```swift
+textField.placeholderTopColor = .blue
+textField.placeholderBottomColor = .brown
+
+textField.enteredTextColor = .orange
+
+textField.lineColor = .green
+```
+Result:
+
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/custom1.png" width="300">
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/custom2.png" width="300">
+
+### Text Alignment
+In order to change text alignment of placeholder and text field use this property:
+```swift
+textField.isLeftTextAlignment = true
+```
+Result:
+
+<img src="https://raw.githubusercontent.com/iznv/UIAnimatedTextField/master/UIAnimatedTextField/Screenshots/custom3.png" width="300">
+
 ## License
 Copyright (c) 2016 Touch Instinct
 
