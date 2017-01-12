@@ -60,7 +60,7 @@ public class UIAnimatedTextField: UIView {
     struct Constants {
         static let done = "Done"
         static let space = " "
-        static let defaultDateFormat = "dd/MM/YYYY"
+        static let defaultDateFormat = "dd/MM/yyyy"
     }
     
     // MARK: - Delegate
