@@ -97,8 +97,16 @@ open class UIAnimatedTextField: UIView {
         }
     }
     
-    @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray
-    @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray
+    @IBInspectable public var placeholderTopColor: UIColor = UIColor.gray {
+        didSet {
+            setState(toState: state)
+        }
+    }
+    @IBInspectable public var placeholderBottomColor: UIColor = UIColor.gray {
+        didSet {
+            setState(toState: state)
+        }
+    }
     
     @IBInspectable public var enteredTextColor: UIColor {
         get { return textField.textColor ?? UIColor.black }
@@ -324,7 +332,7 @@ open class UIAnimatedTextField: UIView {
     
     // MARK: - Animation
     
-    public func setState(toState state: AnimatedTextFieldState, duration: TimeInterval) {
+    public func setState(toState state: AnimatedTextFieldState, duration: TimeInterval = 0) {
         UIView.animate(
             withDuration: duration,
             delay: 0,
