@@ -341,9 +341,10 @@ open class UIAnimatedTextField: UIView {
                 guard let strongSelf = self else {
                     return
                 }
-                
-                strongSelf.placeholderLabel.frame = strongSelf.placeholderLabelFrame(state: state)
+
                 strongSelf.placeholderLabel.transform = strongSelf.placeholderLabelTransform(state: state)
+                strongSelf.placeholderLabel.frame = strongSelf.placeholderLabelFrame(state: state)
+
                 switch state {
                 case .placeholder:
                     strongSelf.placeholderLabel.textColor = strongSelf.placeholderBottomColor
