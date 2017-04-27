@@ -194,7 +194,7 @@ open class UIAnimatedTextField: UIView {
         }
     }
     
-    public var selectedDate: Date?
+    public dynamic var selectedDate: Date?
     public var dateFormat: String = Constants.defaultDateFormat
     public var doneTitle: String = Constants.done {
         didSet {
@@ -426,8 +426,7 @@ open class UIAnimatedTextField: UIView {
     }
     
     @objc private func datePickerValueChanged(_ datePicker: UIDatePicker) {
-        selectedDate = datePicker.date
-        text = datePicker.date.toString(withFormat: dateFormat)
+        updateText(from: datePicker)
     }
     
     private func getDateInputAccessoryView() -> UIView {
@@ -451,8 +450,16 @@ open class UIAnimatedTextField: UIView {
         
         return toolbar
     }
+
+    private func updateText(from datePicker: UIDatePicker) {
+        selectedDate = datePicker.date
+        text = datePicker.date.toString(withFormat: dateFormat)
+    }
     
     @objc private func datePickerDoneAction() {
+        if let datePicker = textField.inputView as? UIDatePicker {
+            updateText(from: datePicker)
+        }
         textField.resignFirstResponder()
     }
     
