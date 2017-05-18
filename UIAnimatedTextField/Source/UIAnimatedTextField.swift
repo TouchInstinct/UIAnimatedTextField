@@ -451,7 +451,7 @@ open class UIAnimatedTextField: UIView {
         return toolbar
     }
 
-    private func updateText(from datePicker: UIDatePicker) {
+    fileprivate func updateText(from datePicker: UIDatePicker) {
         selectedDate = datePicker.date
         text = datePicker.date.toString(withFormat: dateFormat)
     }
@@ -511,7 +511,11 @@ extension UIAnimatedTextField: UITextFieldDelegate {
         if textField.text?.characters.count ?? 0 == 0 {
             setState(toState: .placeholder, duration: UIAnimatedTextField.animationDuration)
         }
-        
+
+        if let datePicker = textField.inputView as? UIDatePicker {
+            updateText(from: datePicker)
+        }
+
         delegate?.animatedTextFieldDidEndEditing?(self)
     }
     
