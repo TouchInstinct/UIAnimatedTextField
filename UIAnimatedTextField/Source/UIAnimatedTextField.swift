@@ -418,7 +418,7 @@ open class UIAnimatedTextField: UIView {
         datePicker.timeZone = TimeZone(secondsFromGMT: 0)
         datePicker.datePickerMode = .date
         datePicker.backgroundColor = UIColor.white
-        datePicker.setDate(currentDate, animated: true)
+        datePicker.setDate(selectedDate ?? currentDate, animated: true)
         datePicker.maximumDate = currentDate
         datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
         
