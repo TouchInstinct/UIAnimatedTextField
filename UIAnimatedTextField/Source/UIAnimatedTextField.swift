@@ -444,7 +444,7 @@ open class UIAnimatedTextField: UIView {
 
         let spacerItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneItem = UIBarButtonItem(title: doneTitle,
-                                       style: .plain,
+                                       style: .done,
                                        target: self,
                                        action: #selector(datePickerDoneAction))
         let attributes = [
