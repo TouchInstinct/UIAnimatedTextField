@@ -24,26 +24,26 @@
 
 import Foundation
 
-enum EditableActionType {
+public enum EditableActionType {
     case selectAll
     case select
     case cut
     case copy
     case paste
 
-    static let allActions = [EditableActionType.selectAll, .select, .cut, .paste, .copy]
+    public static let allActions = [EditableActionType.selectAll, .select, .cut, .paste, .copy]
 }
 
-public class EditableTextField: UITextField {
+open class EditableTextField: UITextField {
 
     /// Actions, that will be disabled for this textField.
     /// By default no actions are disabled.
-    var disabledActions: [EditableActionType] = []
+    open var disabledActions: [EditableActionType] = []
 
     /// Allows to disable moving cursor for user
-    var pinCursorToEnd: Bool = false
+    open var pinCursorToEnd: Bool = false
 
-    var getType: (() -> TextType?)?
+    open var getType: (() -> TextType?)?
 
     // MARK: - Private
 
@@ -61,7 +61,7 @@ public class EditableTextField: UITextField {
 
     // MARK: - Overriden
     
-    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         if disabledSelectors.contains(action) {
             return false
         }
@@ -79,7 +79,7 @@ public class EditableTextField: UITextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    override public func caretRect(for position: UITextPosition) -> CGRect {
+    override open func caretRect(for position: UITextPosition) -> CGRect {
         guard let type = getType?() else {
             return super.caretRect(for: position)
         }
@@ -91,7 +91,7 @@ public class EditableTextField: UITextField {
         return super.caretRect(for: position)
     }
 
-    override public func closestPosition(to point: CGPoint) -> UITextPosition? {
+    override open func closestPosition(to point: CGPoint) -> UITextPosition? {
         if pinCursorToEnd {
             return endOfDocument
         }
