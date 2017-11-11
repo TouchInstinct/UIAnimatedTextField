@@ -24,10 +24,33 @@
 
 import Foundation
 
+enum EditableActionType {
+    case selectAll
+    case select
+    case cut
+    case copy
+    case paste
+
+    static let allActions = [EditableActionType.selectAll, .select, .cut, .paste, .copy]
+}
+
 public class EditableTextField: UITextField {
-    
+
+    /// Actions, that will be disabled for this textField.
+    /// By default no actions are disabled.
+    var disabledActions: [EditableActionType] = []
+
+    /// Allows to disable moving cursor for user
+    var pinCursorToEnd: Bool = false
+
     var getType: (() -> TextType?)?
-    
+
+    // MARK: - Private
+
+    private var disabledSelectors: [Selector] {
+        return disabledActions.map { selector(from: $0) }
+    }
+
     private let menuSelectors = [
         #selector(selectAll(_:)),
         #selector(select(_:)),
@@ -35,8 +58,14 @@ public class EditableTextField: UITextField {
         #selector(copy(_:)),
         #selector(paste(_:))
     ]
+
+    // MARK: - Overriden
     
     override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if disabledSelectors.contains(action) {
+            return false
+        }
+
         guard let type = getType?() else {
             return super.canPerformAction(action, withSender: sender)
         }
@@ -61,5 +90,33 @@ public class EditableTextField: UITextField {
         
         return super.caretRect(for: position)
     }
+
+    override public func closestPosition(to point: CGPoint) -> UITextPosition? {
+        if pinCursorToEnd {
+            return endOfDocument
+        }
+
+        return super.closestPosition(to: point)
+    }
     
+}
+
+// MARK: - Private extensions
+
+private extension UITextField {
+
+    func selector(from actionTyoe: EditableActionType) -> Selector {
+        switch actionTyoe {
+        case .selectAll:
+            return #selector(selectAll(_:))
+        case .select:
+            return #selector(select(_:))
+        case .cut:
+            return #selector(cut(_:))
+        case .copy:
+            return #selector(copy(_:))
+        case .paste:
+            return #selector(paste(_:))
+        }
+    }
 }

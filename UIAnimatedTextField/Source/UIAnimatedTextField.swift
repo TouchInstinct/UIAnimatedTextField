@@ -223,7 +223,7 @@ open class UIAnimatedTextField: UIView {
     private var state: AnimatedTextFieldState {
         var state: AnimatedTextFieldState = .placeholder
 
-        if textField.text?.characters.count ?? 0 > 0 || textField.isFirstResponder {
+        if textField.text?.count ?? 0 > 0 || textField.isFirstResponder {
             state = .text
         }
 
@@ -491,7 +491,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
     }
 
     open func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text?.characters.count ?? 0 == 0 {
+        if textField.text?.count ?? 0 == 0 {
             setState(toState: .text, duration: UIAnimatedTextField.animationDuration)
         }
 
@@ -515,7 +515,7 @@ extension UIAnimatedTextField: UITextFieldDelegate {
     }
 
     open func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.text?.characters.count ?? 0 == 0 {
+        if textField.text?.count ?? 0 == 0 {
             setState(toState: .placeholder, duration: UIAnimatedTextField.animationDuration)
         }
 
