@@ -194,7 +194,7 @@ open class UIAnimatedTextField: UIView {
         }
     }
 
-    public dynamic var selectedDate: Date?
+    @objc public dynamic var selectedDate: Date?
     public var dateFormat: String = Constants.defaultDateFormat
 
     public var doneTitle: String = Constants.done {
@@ -448,7 +448,7 @@ open class UIAnimatedTextField: UIView {
                                        target: self,
                                        action: #selector(datePickerDoneAction))
         let attributes = [
-            NSForegroundColorAttributeName: doneTitleColor
+            NSAttributedStringKey.foregroundColor: doneTitleColor
         ]
 
         doneItem.setTitleTextAttributes(attributes, for: .normal)
