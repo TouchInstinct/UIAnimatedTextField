@@ -349,8 +349,13 @@ open class UIAnimatedTextField: UIView {
                     return
                 }
 
-                strongSelf.placeholderLabel.transform = strongSelf.placeholderLabelTransform(state: state)
-                strongSelf.placeholderLabel.frame = strongSelf.placeholderLabelFrame(state: state)
+                if strongSelf.isLeftTextAlignment {
+                    strongSelf.placeholderLabel.transform = strongSelf.placeholderLabelTransform(state: state)
+                    strongSelf.placeholderLabel.frame = strongSelf.placeholderLabelFrame(state: state)
+                } else {
+                    strongSelf.placeholderLabel.frame = strongSelf.placeholderLabelFrame(state: state)
+                    strongSelf.placeholderLabel.transform = strongSelf.placeholderLabelTransform(state: state)
+                }
 
                 switch state {
                 case .placeholder:
