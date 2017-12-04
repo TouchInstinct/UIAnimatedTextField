@@ -31,7 +31,7 @@ public enum EditableActionType {
     case copy
     case paste
 
-    public static let allActions = [EditableActionType.selectAll, .select, .cut, .paste, .copy]
+    public static let allActions: [EditableActionType] = [.selectAll, .select, .cut, .paste, .copy]
 }
 
 open class EditableTextField: UITextField {
