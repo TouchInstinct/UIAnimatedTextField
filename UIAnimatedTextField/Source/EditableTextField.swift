@@ -24,10 +24,33 @@
 
 import Foundation
 
-public class EditableTextField: UITextField {
-    
-    var getType: (() -> TextType?)?
-    
+public enum EditableActionType {
+    case selectAll
+    case select
+    case cut
+    case copy
+    case paste
+
+    public static let allActions: [EditableActionType] = [.selectAll, .select, .cut, .paste, .copy]
+}
+
+open class EditableTextField: UITextField {
+
+    /// Actions, that will be disabled for this textField.
+    /// By default no actions are disabled.
+    open var disabledActions: [EditableActionType] = []
+
+    /// Allows to disable moving cursor for user
+    open var pinCursorToEnd: Bool = false
+
+    open var getType: (() -> TextType?)?
+
+    // MARK: - Private
+
+    private var disabledSelectors: [Selector] {
+        return disabledActions.map { selector(from: $0) }
+    }
+
     private let menuSelectors = [
         #selector(selectAll(_:)),
         #selector(select(_:)),
@@ -35,8 +58,14 @@ public class EditableTextField: UITextField {
         #selector(copy(_:)),
         #selector(paste(_:))
     ]
+
+    // MARK: - Overriden
     
-    override public func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if disabledSelectors.contains(action) {
+            return false
+        }
+
         guard let type = getType?() else {
             return super.canPerformAction(action, withSender: sender)
         }
@@ -50,7 +79,7 @@ public class EditableTextField: UITextField {
         return super.canPerformAction(action, withSender: sender)
     }
     
-    override public func caretRect(for position: UITextPosition) -> CGRect {
+    override open func caretRect(for position: UITextPosition) -> CGRect {
         guard let type = getType?() else {
             return super.caretRect(for: position)
         }
@@ -61,5 +90,33 @@ public class EditableTextField: UITextField {
         
         return super.caretRect(for: position)
     }
+
+    override open func closestPosition(to point: CGPoint) -> UITextPosition? {
+        if pinCursorToEnd {
+            return endOfDocument
+        }
+
+        return super.closestPosition(to: point)
+    }
     
+}
+
+// MARK: - Private extensions
+
+private extension UITextField {
+
+    func selector(from actionTyoe: EditableActionType) -> Selector {
+        switch actionTyoe {
+        case .selectAll:
+            return #selector(selectAll(_:))
+        case .select:
+            return #selector(select(_:))
+        case .cut:
+            return #selector(cut(_:))
+        case .copy:
+            return #selector(copy(_:))
+        case .paste:
+            return #selector(paste(_:))
+        }
+    }
 }
