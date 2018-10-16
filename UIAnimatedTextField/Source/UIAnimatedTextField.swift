@@ -453,7 +453,7 @@ open class UIAnimatedTextField: UIView {
                                        target: self,
                                        action: #selector(datePickerDoneAction))
         let attributes = [
-            NSAttributedStringKey.foregroundColor: doneTitleColor
+            NSAttributedString.Key.foregroundColor: doneTitleColor
         ]
 
         doneItem.setTitleTextAttributes(attributes, for: .normal)
